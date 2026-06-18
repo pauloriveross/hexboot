@@ -1,0 +1,26 @@
+# hexboot — Spring Boot Hexagonal Microservices
+# Full instructions: ~/.claude/skills/hexboot/SKILL.md or .opencode/skills/hexboot/SKILL.md
+
+<hexboot_workflows>
+- CREATE: Ask developer for options (package, DB, security, etc.) → scaffold hexagonal project
+- MODIFY: Detect existing hexagonal structure → add entity/endpoint/adapter
+- MIGRATE: Convert Controller-Service-Repository → Hexagonal (10 steps)
+- AUDIT: 22+ grep-based checks with severity and exact fix
+</hexboot_workflows>
+
+<hexboot_rules>
+- domain/ must have ZERO framework imports (Spring, JPA, Jackson)
+- @Transactional goes on application use case, NOT domain or adapter
+- @PreAuthorize goes on inbound port interface, NOT on controller
+- Layer dependency: domain ← application ← adapter (never the reverse)
+- Domain model = pure Java, JPA entity = separate class in adapter
+- Naming: Order (domain), OrderEntity (JPA), OrderResponse (DTO), OrderMapper
+</hexboot_rules>
+
+<hexboot_audit>
+- Architecture scan: 12 checks (grep-based)
+- Optimization scan: 5 checks (N+1, indexes, transactions, blocking, cache)
+- Production-readiness: 10 checks (actuator, secrets, Docker, MDC, error codes)
+- Security scan: 4 checks (@PreAuthorize placement, CSRF, SecurityChain)
+- Test coverage: 3 checks
+</hexboot_audit>

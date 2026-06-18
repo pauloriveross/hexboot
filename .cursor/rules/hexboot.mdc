@@ -1,0 +1,27 @@
+---
+description: >
+  Creates, modifies, migrates, and audits production-ready Spring Boot
+  microservices using Hexagonal Architecture (Ports & Adapters). Activates
+  when working with Spring Boot, hexagonal architecture, microservices,
+  ports and adapters, DDD, clean architecture, or Java microservice projects.
+globs: "**/*.java"
+alwaysApply: false
+---
+
+# hexboot — Spring Boot Hexagonal Microservices
+
+Full instructions are maintained in the canonical skill file.
+Refer to `~/.claude/skills/hexboot/SKILL.md` or `.opencode/skills/hexboot/SKILL.md`.
+
+## Quick reference
+
+1. **CREATE** — Ask developer for options → scaffold project with domain/application/adapter layers
+2. **MODIFY** — Detect structure → add entity, endpoint, or adapter following layer order
+3. **MIGRATE** — Convert traditional layered project to hexagonal step by step
+4. **AUDIT** — Run 22+ grep-based checks for architecture, performance, and production-readiness
+
+## Non-negotiable rules
+- `domain/` has ZERO framework imports
+- `@Transactional` in application layer only
+- `@PreAuthorize` on inbound ports, not controllers
+- Layer order: Domain → Port → UseCase → Adapter
